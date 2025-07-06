@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Leadership homepage</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <nav class="top-nav">
+        <div>
+            <a th:href="@{/}">Home</a>
+        </div>
+        <form action="#" th:action="@{/logout}" method="POST" class="logout">
+            <button value="Logout" type="submit" class="logout-button">Logout</button>
+        </form>
+    </nav>
+    <div class="content">
+        <h2>LEADERS page</h2>
+        <hr>
+        <p>
+            Leadership meeting on 6th July 7:30am UTC.
+        </p>
+    </div>
+    <footer>
+        <p th:text="'Current time on server is ' + ${date}" class="highlight"></p>
+    </footer>
+</body>
+</html>

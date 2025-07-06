@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom Login</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="content">
+        <h2 style="text-align:center;">Custom login</h2>
+        <form th:action="@{/authenticate}" method="POST" style="border: 1px solid black;">
+            <label for="username">
+                Username
+                <input type="text" name="username" id="username"/>
+            </label>
+            <label for="password">
+                Password
+                <input type="password" name="password" id="password"/>
+            </label>
+            <div th:if="${param.error}">
+                <i style="color: red;">Invalid username or password.</i>
+            </div>
+            <div th:if="${param.logout}">
+                <i style="color: green;">Logged out.</i>
+            </div>
+            <input type="submit" value="Login"/>
+        </form>
+    </div>
+    <footer>
+        <p th:text="'Current time on server is ' + ${date}" class="highlight"></p>
+    </footer>
+</body>
+</html>

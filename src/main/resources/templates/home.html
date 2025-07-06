@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <nav class="top-nav">
+        <form action="#" th:action="@{/logout}" method="POST" class="logout">
+            <button value="Logout" type="submit" class="logout-button">Logout</button>
+        </form>
+    </nav>
+    <div class="content">
+        <h1>Works!</h1>
+        <hr>
+        <div>
+            <p>User: <span sec:authentication="principal.username"></span></p>
+            <p>Roles: <span sec:authentication="principal.authorities"></span></p>
+        </div>
+        <div sec:authorize="hasAnyRole('MANAGER','ADMIN')">
+            <ul>
+                <li sec:authorize="hasRole('MANAGER')">
+                    <a th:href="@{/leaders}">Leaders</a>
+                </li>
+                <li sec:authorize="hasRole('ADMIN')">
+                    <a th:href="@{/systems}">Administrator</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <footer>
+        <p th:text="'Current time on server is ' + ${date}" class="highlight"></p>
+    </footer>
+</body>
+</html>
